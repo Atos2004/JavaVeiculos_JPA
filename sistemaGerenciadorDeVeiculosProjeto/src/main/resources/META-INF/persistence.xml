@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+	version="2.2">
+	<!-- unidade de persistencia -->
+	<persistence-unit name="veiculosPU" transaction-type="RESOURCE_LOCAL"> 
+	<!--COPIAR E COLAR NA CLASSE JAVA -->
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+		<properties>
+			<!-- Propriedades JDBC -->
+			<property name="jakarta.persistence.jdbc.driver"
+				value="org.postgresql.Driver" />
+			<property name="jakarta.persistence.jdbc.url"
+				value="jdbc:postgresql://localhost:5432/veiculos" /> <!-- ALTERE
+			DE ACORDO COM A SUA CONFIGURACAO -->
+			<property name="jakarta.persistence.jdbc.user" value="postgres" /> <!--
+			ALTERE DE ACORDO COM A SUA CONFIGURACAO -->
+			<property name="jakarta.persistence.jdbc.password" value="123" /> <!--
+			ALTERE DE ACORDO COM A SUA CONFIGURACAO -->
+			<!-- Configurações específicas do Hibernate -->
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="javax.persistence.validation.mode" value="AUTO" />
+
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="h2-in-memory-pu"
+		transaction-type="RESOURCE_LOCAL">
+
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+		<!-- Propriedades do banco H2 -->
+		<properties>
+			<!-- URL de conexão ao banco H2 em memória -->
+			<property name="jakarta.persistence.jdbc.url"
+				value="jdbc:h2:tcp://localhost/~/test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE" />
+
+			<!-- Driver JDBC do H2 -->
+			<property name="jakarta.persistence.jdbc.driver"
+				value="org.h2.Driver" />
+
+			<!-- Credenciais (opcional para H2 em memória) -->
+			<property name="jakarta.persistence.jdbc.user" value="sa" />
+			<property name="jakarta.persistence.jdbc.password" value="" />
+
+			<!-- Configuração do Hibernate (implementação JPA mais comum) -->
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.H2Dialect" />
+			<property name="hibernate.hbm2ddl.auto" value="update" /> <!--
+				Cria ou atualiza o esquema -->
+			<property name="hibernate.show_sql" value="true" />      <!-- Mostra
+				as consultas SQL -->
+			<property name="hibernate.format_sql" value="true" />    <!--
+				Formata as consultas SQL -->
+			
+			
+
+		</properties>
+	</persistence-unit>
+
+</persistence>
